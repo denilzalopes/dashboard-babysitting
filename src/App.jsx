@@ -177,7 +177,7 @@ export default function App() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
             <div>
               <div style={{ fontSize: 11, letterSpacing: 3, color: "#6366f1", fontWeight: 600, marginBottom: 4, textTransform: "uppercase" }}>Suivi babysitting</div>
-              <h1 style={{ fontSize: 26, fontWeight: 700, color: "#f1f5f9", lineHeight: 1.2 }}>Joseph Bahr</h1>
+              <h1 style={{ fontSize: 26, fontWeight: 700, color: "#f1f5f9", lineHeight: 1.2 }}>Joseph Bähr</h1>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               {saved && <span className="saved-badge" style={{ fontSize: 12, color: "#4ade80", display: "flex", alignItems: "center", gap: 4 }}>✓ Sauvegardé</span>}
