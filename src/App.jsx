@@ -168,7 +168,7 @@ export default function App() {
         <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
           <div>
             <div style={{ fontSize: 10, letterSpacing: 3, color: "#6366f1", fontWeight: 600, marginBottom: 2, textTransform: "uppercase" }}>Suivi babysitting</div>
-            <h1 style={{ fontSize: 22, fontWeight: 700, color: "#f1f5f9" }}>Joseph Bahr</h1>
+            <h1 style={{ fontSize: 22, fontWeight: 700, color: "#f1f5f9" }}>Joseph Bähr</h1>
             <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 4 }}>
               <span style={{ fontSize: 12, color: "#64748b" }}>Taux :</span>
               <span style={{ fontSize: 13, fontWeight: 700, color: "#a5b4fc", fontFamily: "'DM Mono',monospace" }}>{taux}€/h</span>
@@ -188,43 +188,27 @@ export default function App() {
 
       <div style={{ maxWidth: 600, margin: "0 auto", padding: "16px" }}>
 
-        {/* Séances + Total heures */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 10 }}>
-          {[
-            { label: "Séances totales", value: entries.length, sub: formatDuree(totalMin), icon: "📅", accent: "#6366f1" },
-            { label: "Total heures", value: formatDuree(totalMin), sub: formatEur(montantTotal), icon: "⏱", accent: "#8b5cf6" },
-          ].map((card) => (
-            <div key={card.label} style={{ background: "rgba(30,41,59,0.8)", border: `1px solid ${card.accent}33`, borderRadius: 12, padding: "12px 14px" }}>
-              <div style={{ fontSize: 18, marginBottom: 4 }}>{card.icon}</div>
-              <div style={{ fontSize: 20, fontWeight: 700, color: card.accent, fontFamily: "'DM Mono',monospace" }}>{card.value}</div>
-              <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>{card.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Montant dû en grand */}
-        <div style={{ background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.3)", borderRadius: 14, padding: "14px 16px", marginBottom: 10 }}>
-          <div style={{ fontSize: 11, color: "#f87171", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>💸 Montant dû (non payé)</div>
-          <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
-            <div style={{ fontSize: 32, fontWeight: 700, color: "#f87171", fontFamily: "'DM Mono',monospace" }}>{formatEur(montantDu)}</div>
-            <div style={{ fontSize: 18, fontWeight: 600, color: "#f87171", opacity: 0.7, fontFamily: "'DM Mono',monospace" }}>{formatDuree(nonPayesMin)}</div>
-          </div>
-          <div style={{ fontSize: 12, color: "#64748b", marginTop: 4 }}>{nbNonPayes} séance{nbNonPayes > 1 ? "s" : ""} en attente</div>
-        </div>
-
-        {/* Déjà payé + Total */}
+        {/* 4 stats cards : heures en évidence, montant en secondaire */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 14 }}>
-          <div style={{ background: "rgba(34,197,94,0.08)", border: "1px solid rgba(34,197,94,0.25)", borderRadius: 12, padding: "12px 14px" }}>
-            <div style={{ fontSize: 10, color: "#4ade80", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>✅ Déjà payé</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: "#4ade80", fontFamily: "'DM Mono',monospace" }}>{formatEur(montantPaye)}</div>
-            <div style={{ fontSize: 12, fontWeight: 600, color: "#4ade80", opacity: 0.7, fontFamily: "'DM Mono',monospace", marginTop: 2 }}>{formatDuree(payesMin)}</div>
-            <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>{nbPayes} séance{nbPayes > 1 ? "s" : ""}</div>
+          <div style={{ background: "rgba(30,41,59,0.8)", border: "1px solid rgba(99,102,241,0.2)", borderRadius: 12, padding: "12px 14px" }}>
+            <div style={{ fontSize: 11, color: "#6366f1", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>📅 Séances</div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: "#e2e8f0", fontFamily: "'DM Mono',monospace" }}>{entries.length}</div>
+            <div style={{ fontSize: 12, color: "#475569", marginTop: 4 }}>{formatDuree(totalMin)} au total</div>
           </div>
-          <div style={{ background: "rgba(99,102,241,0.08)", border: "1px solid rgba(99,102,241,0.2)", borderRadius: 12, padding: "12px 14px" }}>
-            <div style={{ fontSize: 10, color: "#a5b4fc", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>📊 Total général</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: "#a5b4fc", fontFamily: "'DM Mono',monospace" }}>{formatEur(montantTotal)}</div>
-            <div style={{ fontSize: 12, fontWeight: 600, color: "#a5b4fc", opacity: 0.7, fontFamily: "'DM Mono',monospace", marginTop: 2 }}>{formatDuree(totalMin)}</div>
-            <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>{entries.length} séances</div>
+          <div style={{ background: "rgba(30,41,59,0.8)", border: "1px solid rgba(139,92,246,0.2)", borderRadius: 12, padding: "12px 14px" }}>
+            <div style={{ fontSize: 11, color: "#8b5cf6", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>⏱ Total heures</div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: "#e2e8f0", fontFamily: "'DM Mono',monospace" }}>{formatDuree(totalMin)}</div>
+            <div style={{ fontSize: 12, color: "#475569", marginTop: 4 }}>{formatEur(montantTotal)}</div>
+          </div>
+          <div style={{ background: "rgba(34,197,94,0.07)", border: "1px solid rgba(34,197,94,0.2)", borderRadius: 12, padding: "12px 14px" }}>
+            <div style={{ fontSize: 11, color: "#4ade80", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>✅ Heures payées</div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: "#e2e8f0", fontFamily: "'DM Mono',monospace" }}>{formatDuree(payesMin)}</div>
+            <div style={{ fontSize: 12, color: "#475569", marginTop: 4 }}>{formatEur(montantPaye)}</div>
+          </div>
+          <div style={{ background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.25)", borderRadius: 12, padding: "12px 14px" }}>
+            <div style={{ fontSize: 11, color: "#f87171", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>⏳ Heures dues</div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: "#e2e8f0", fontFamily: "'DM Mono',monospace" }}>{formatDuree(nonPayesMin)}</div>
+            <div style={{ fontSize: 12, color: "#475569", marginTop: 4 }}>{formatEur(montantDu)}</div>
           </div>
         </div>
 
@@ -262,9 +246,10 @@ export default function App() {
                     {formatDate(entry.date)}
                   </span>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: "auto" }}>
-                    <span style={{ fontSize: 15, fontWeight: 700, color: entry.paye ? "#4ade80" : "#f87171", fontFamily: "'DM Mono',monospace" }}>
-                      {formatEur(montant)}
-                    </span>
+                    <div style={{ textAlign: "right" }}>
+                      <div style={{ fontSize: 15, fontWeight: 700, color: "#a5b4fc", fontFamily: "'DM Mono',monospace" }}>{formatDuree(dur)}</div>
+                      <div style={{ fontSize: 11, color: "#475569", fontFamily: "'DM Mono',monospace" }}>{formatEur(montant)}</div>
+                    </div>
                     <button className="btn" onClick={() => handleEdit(entry)}
                       style={{ background: "rgba(99,102,241,0.15)", color: "#818cf8", border: "none", borderRadius: 6, padding: "5px 8px", fontSize: 13 }}>✏️</button>
                     <button className="btn" onClick={() => setDeleteConfirm(entry.id)}
@@ -273,7 +258,7 @@ export default function App() {
                 </div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <span style={{ fontSize: 13, color: "#64748b", fontFamily: "'DM Mono',monospace" }}>
-                    {entry.debut} → {entry.fin} · {formatDuree(dur)}
+                    {entry.debut} → {entry.fin}
                   </span>
                   <button className={`btn ${entry.paye ? "tag-paye" : "tag-nonpaye"}`}
                     onClick={() => handleToggle(entry.id)}
